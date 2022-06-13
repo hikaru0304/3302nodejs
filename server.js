@@ -16,6 +16,8 @@
     })
     //morgan HTTP request 기록해주는 미들웨어
     app.use(morgan('dev'))
-
+    // body.parser
+    app.use(express.urlencoded({extended: true}))
+    app.use(express.json())
     const PORT = process.env.PORT || 3333;
     app.listen(PORT);
