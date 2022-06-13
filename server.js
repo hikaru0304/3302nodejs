@@ -4,15 +4,15 @@
     const {modelNames, mongo} = require("mongoose");
     require('dotenv/config')
     const app = express()
-    mongoose.connect('mongodb+srv://mirim:<tiger>@cluster0.rlmfn.mongodb.net/?retryWrites=true&w=majority',{useNewUrlParser: true, useUnifiedTopology: true}
+    mongoose.connect(process.env.DB_CONNECTION, {useNewUrlParser: true, useUnifiedTopology: true}
     )
     const db = mongoose.connection;
-    db.on('error',function (process.env.DB_CONNECTION){
+    db.on('error',function (err){
         console.log(err)
     })
 
-    db.once('open',function (){
-        console.log(err)
+    db.once('open',function (err){
+        console.log('디비연결')
     })
     //morgan HTTP request 기록해주는 미들웨어
     app.use(morgan('dev'))
